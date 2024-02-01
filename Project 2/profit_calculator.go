@@ -18,12 +18,14 @@ func main() {
 
 	ebt := revenue - expenses //Earnings Before Tax(EBT)
 
-	profit := ebt - (taxRate * ebt) //Earnings AFter Tax OR Profit
+	profit := ebt - ((taxRate / 100) * ebt) //Earnings AFter Tax OR Profit
 
 	ratio := ebt / profit //EBT/Profit ratio
 
-	fmt.Printf("EBT: %f\n", ebt)
-	fmt.Printf("Profit: %f\n", profit)
+	//NOTE: %f prints the corresponding number as a decimal floating point number (e.g. 321.65), %e prints the number in scientific notation (e.g. 3.2165e+2). Generally speaking, %g strips any trailing zeroes and trailing decimal point from these two representations and prints whichever is shortest.
+
+	fmt.Printf("EBT: %g\n", ebt)
+	fmt.Printf("Profit: %g\n", profit)
 	fmt.Printf("Ratio: %f\n", ratio)
 
 }
