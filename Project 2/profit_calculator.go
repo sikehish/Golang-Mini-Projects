@@ -24,7 +24,7 @@ func main() {
 
 	//NOTE: %f prints the corresponding number as a decimal floating point number (e.g. 321.65), %e prints the number in scientific notation (e.g. 3.2165e+2). Generally speaking, %g strips any trailing zeroes and trailing decimal point from these two representations and prints whichever is shortest.
 
-	fmt.Printf("EBT: %g\n", ebt)
+	fmt.Printf("EBT: %v\n", ebt) //Prints value in its default format
 	fmt.Printf("Profit: %g\n", profit)
 	fmt.Printf("Ratio: %f\n", ratio)
 
