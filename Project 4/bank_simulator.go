@@ -42,7 +42,7 @@ func handleReadBalance() (float64, error) {
 	//Ineterstingly, golang allows redeclaration of err variable but not any other variable in the above lines of code
 	//Its called comma ok syntax: https://www.golinuxcloud.com/go-comma-ok-idiom/
 
-	return balance, err
+	return balance, nil
 }
 
 func main() {
