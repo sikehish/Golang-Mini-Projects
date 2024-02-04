@@ -3,6 +3,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -26,16 +27,38 @@ func handleWriteBalance(accountBalance float64) {
 	//Reference: https://www.redhat.com/sysadmin/linux-file-permissions-explained
 }
 
-func handleReadBalance() float64 {
-	data, _ := os.ReadFile("balance.txt")
+func handleReadBalance() (float64, error) {
+	data, err := os.ReadFile("balance.txt")
+	if err != nil {
+		return 1000, errors.New("Failed to find balance file")
+	}
 	balanceText := string(data)
-	balance, _ := strconv.ParseFloat(balanceText, 64)
-	return balance
+	balance, err := strconv.ParseFloat(balanceText, 64)
+
+	if err != nil {
+		return 1000, errors.New("Failed to parse stored balance value")
+	}
+
+	//Ineterstingly, golang allows redeclaration of err variable but not any other variable in the above lines of code
+	//Its called comma ok syntax: https://www.golinuxcloud.com/go-comma-ok-idiom/
+
+	return balance, err
 }
 
 func main() {
 
-	accountBalance := handleReadBalance()
+	accountBalance, err := handleReadBalance()
+
+	if err != nil {
+		// fmt.Print("Error: ")
+		// fmt.Println(err)
+		//OR
+		fmt.Println("ERROR: ", err)
+		fmt.Println("------------------")
+		//Ways to exit:
+		//os.Exit(0) vs return vs panic("Sorry, cant continue") --> Panic also displays the source of error(file and line no) so it looks like a proper app. crash
+	}
+
 	//OR var accountBalance=10000.0 OR var accountBalance float64=10000
 	fmt.Println("Welcome to Go Bank!")
 
