@@ -4,24 +4,13 @@ package main
 
 import (
 	"fmt"
-	"time"
+
+	"github.com/sikehish/Golang-Mini-Projects/user"
 )
 
 //VVI NOTE: FUNCTION VS METHODS
 //FUNCTION(NOT METHOD): Accept a struct and operates on the struct
 //METHOD: Uses a receiver(which is the struct on which the method has to be called)-->methods are defined on structs
-
-type user struct {
-	firstName string
-	lastName  string
-	birthdate string
-	createdAt time.Time
-}
-
-//Method
-func (u user) outputUserDetails() {
-	fmt.Println(u.firstName, u.lastName, u.birthdate)
-}
 
 func main() {
 	userFirstName := getUserData("Please enter your first name: ")
@@ -62,20 +51,29 @@ func main() {
 	// 	createdAt: time.Now(),
 	// }
 
-	//Approach 4
-	appUser := user{
-		firstName: userFirstName,
-		lastName:  userLastName,
-		birthdate: userBirthdate,
-		createdAt: time.Now(),
-	}
-
+	// //Approach 4
+	// appUser := user{
+	// 	firstName: userFirstName,
+	// 	lastName:  userLastName,
+	// 	birthdate: userBirthdate,
+	// 	createdAt: time.Now(),
+	// }
 	//NOTE: There is another approach(using a function call like new to instantiate a struct)
+
+	// var appUser *user
+	appUser, err := user.NewUser(userFirstName, userLastName, userBirthdate)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	// outputUserDetails(userFirstName, userLastName, userBirthdate)
 	// outputUserDetails(appUser)
 	// outputUserDetails(&appUser) //Pointer based approach
 	//OR Method based approach
+	appUser.outputUserDetails()
+	appUser.clearUserName()
 	appUser.outputUserDetails()
 
 }
@@ -98,6 +96,7 @@ func outputUserDetails(u *user) {
 func getUserData(promptText string) string {
 	fmt.Print(promptText)
 	var value string
-	fmt.Scan(&value)
+	// fmt.Scan(&value) (doesnt take empty string as input, but Scanln stops recording the input as soon as new line is encountered)
+	fmt.Scanln(&value)
 	return value
 }
