@@ -5,7 +5,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/sikehish/Golang-Mini-Projects/user"
+	"github.com/sikehish/Golang-Mini-Projects/Project6/user"
 )
 
 //VVI NOTE: FUNCTION VS METHODS
@@ -87,8 +87,8 @@ func main() {
 // 	fmt.Println(u.firstName, u.lastName, u.birthdate)
 // }
 
-//Pass by ref approach below:
-func outputUserDetails(u *user) {
+// Pass by ref approach below:
+func outputUserDetails(u *user.User) {
 	//Pointers to struct exception: Normally you'd dereference to access the value like: (*u).birtthdate, which is valid, but in go, we have a shortcut/exception: (*u).birthdate is same as u.birthdate(As you can see in the below line)
 	fmt.Println(u.firstName, u.lastName, u.birthdate)
 }

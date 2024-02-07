@@ -8,7 +8,8 @@ import (
 	"time"
 )
 
-type user struct {
+//can be imported directly
+type User struct {
 	firstName string
 	lastName  string
 	birthdate string
@@ -16,12 +17,12 @@ type user struct {
 }
 
 //Method
-func (u user) outputUserDetails() {
+func (u User) outputUserDetails() {
 	fmt.Println(u.firstName, u.lastName, u.birthdate)
 }
 
 //Mutation methods(they dont create a copy but instead take a pointer and modify the data)
-func (u *user) clearUserName() {
+func (u *User) clearUserName() {
 	u.firstName = ""
 	u.lastName = ""
 }
@@ -36,13 +37,13 @@ func (u *user) clearUserName() {
 // 	}
 // }
 //PASS BY REFERENCE VERSION OF THE ABOVE CONSTRUCTOR(Not required tho)
-func NewUser(firstName, lastName, birthdate string) (*user, error) {
+func NewUser(firstName, lastName, birthdate string) (*User, error) {
 
 	if firstName == "" || lastName == "" || birthdate == "" {
 		return nil, errors.New("No field can be left empty")
 	}
 
-	return &user{
+	return &User{
 		firstName: firstName,
 		lastName:  lastName,
 		birthdate: birthdate,
