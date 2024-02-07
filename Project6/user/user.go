@@ -16,6 +16,48 @@ type User struct {
 	createdAt time.Time
 }
 
+// Struct embedding: Using a struct in another struct
+
+// 1. Anonymous Embedding
+type Admin struct {
+	email    string
+	password string
+	User
+}
+
+func NewAdmin(email, password string) Admin {
+	return Admin{
+		email:    email,
+		password: password,
+		User: User{
+			firstName: "ADMIN",
+			lastName:  "ADMIN",
+			birthdate: "---",
+			createdAt: time.Now(),
+		},
+	}
+}
+
+// // OR 2. Explicit embedding
+// type Admin struct {
+// 	email    string
+// 	password string
+// 	User     User
+// }
+
+// func NewAdmin(email, password string) Admin {
+// 	return Admin{
+// 		email:    email,
+// 		password: password,
+// 		User: User{
+// 			firstName: "ADMIN",
+// 			lastName:  "ADMIN",
+// 			birthdate: "---",
+// 			createdAt: time.Now(),
+// 		},
+// 	}
+// }
+
 // Method
 func (u User) OutputUserDetails() {
 	fmt.Println(u.firstName, u.lastName, u.birthdate)
@@ -54,3 +96,5 @@ func New(firstName, lastName, birthdate string) (*User, error) {
 		createdAt: time.Now(),
 	}, nil
 }
+
+//NOTE: User{} creates an empty struct

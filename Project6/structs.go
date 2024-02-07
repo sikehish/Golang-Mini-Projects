@@ -19,7 +19,7 @@ func main() {
 
 	//Instantiating user struct
 
-	// //Approach 1(You can also optionally omiy fields, which would then be set to null)
+	// //Approach 1(You can also optionally omit fields, which would then be set to null)
 	// var appUser user
 	// appUser = user{
 	// 	firstName: userFirstName,
@@ -81,6 +81,19 @@ func main() {
 	// 	firstName: userFirstName, --> firstName should have a capital 'F' in user struct for it to be accessible here
 	// }
 
+	//A new admin is created in user package
+	appAdmin := user.NewAdmin("admin@gmail.com", "12345")
+
+	// //Scenario 1: if User field is explicitly mentioned
+	// appAdmin.User.OutputUserDetails()
+	// appAdmin.User.ClearUserName()
+	// appAdmin.User.OutputUserDetails()
+
+	//Scenario 2: If User struct is embedded into the admin struct as it is
+	appAdmin.OutputUserDetails()
+	appAdmin.ClearUserName()
+	appAdmin.OutputUserDetails()
+
 }
 
 //FUNCTIONS
@@ -105,3 +118,18 @@ func getUserData(promptText string) string {
 	fmt.Scanln(&value)
 	return value
 }
+
+// // -------
+// // CUSTOM types OR(Type aliases)
+// // NOTE YOU CANNOT ADD METHODS TO A PREDEFINED TYPE LIKE string or int
+
+// type str string;
+
+// func (text str) log(){
+// 	fmt.Println(text)
+// }
+
+// func main(){
+// 	var name str="Hisham"
+// 	name.log()
+// }
