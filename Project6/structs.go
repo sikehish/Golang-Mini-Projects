@@ -61,7 +61,7 @@ func main() {
 	//NOTE: There is another approach(using a function call like new to instantiate a struct)
 
 	// var appUser *user
-	appUser, err := user.NewUser(userFirstName, userLastName, userBirthdate)
+	appUser, err := user.New(userFirstName, userLastName, userBirthdate)
 
 	if err != nil {
 		fmt.Println(err)
@@ -72,9 +72,14 @@ func main() {
 	// outputUserDetails(appUser)
 	// outputUserDetails(&appUser) //Pointer based approach
 	//OR Method based approach
-	appUser.outputUserDetails()
-	appUser.clearUserName()
-	appUser.outputUserDetails()
+	appUser.OutputUserDetails()
+	appUser.ClearUserName()
+	appUser.OutputUserDetails()
+
+	// // Instantiating after createing a seperate package for user
+	// appUser2 := user.User{
+	// 	firstName: userFirstName, --> firstName should have a capital 'F' in user struct for it to be accessible here
+	// }
 
 }
 
@@ -87,11 +92,11 @@ func main() {
 // 	fmt.Println(u.firstName, u.lastName, u.birthdate)
 // }
 
-// Pass by ref approach below:
-func outputUserDetails(u *user.User) {
-	//Pointers to struct exception: Normally you'd dereference to access the value like: (*u).birtthdate, which is valid, but in go, we have a shortcut/exception: (*u).birthdate is same as u.birthdate(As you can see in the below line)
-	fmt.Println(u.firstName, u.lastName, u.birthdate)
-}
+// // Pass by ref approach below:
+// func outputUserDetails(u *user.User) {
+// 	//Pointers to struct exception: Normally you'd dereference to access the value like: (*u).birtthdate, which is valid, but in go, we have a shortcut/exception: (*u).birthdate is same as u.birthdate(As you can see in the below line)
+// 	fmt.Println(u.firstName, u.lastName, u.birthdate)
+// }
 
 func getUserData(promptText string) string {
 	fmt.Print(promptText)
