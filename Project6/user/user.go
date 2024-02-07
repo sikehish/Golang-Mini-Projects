@@ -58,12 +58,14 @@ func NewAdmin(email, password string) Admin {
 // 	}
 // }
 
-// Method
+// NOTE: methods can be defined on both value receivers (non-pointer receivers) and pointer receivers. When you define a method on a type, you can use either a value receiver or a pointer receiver. Go automatically dreferences/creates a pointer to match the receicer's type. So, we need not really worry about pointers vs values in Go structs
+
+// Method (Value receiver)
 func (u User) OutputUserDetails() {
 	fmt.Println(u.firstName, u.lastName, u.birthdate)
 }
 
-// Mutation methods(they dont create a copy but instead take a pointer and modify the data)
+// Mutation methods(they dont create a copy but instead take a pointer and modify the data)(Pointer receiver)
 func (u *User) ClearUserName() {
 	u.firstName = ""
 	u.lastName = ""
