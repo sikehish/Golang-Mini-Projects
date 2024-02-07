@@ -3,12 +3,10 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strings"
 
 	"github.com/sikehish/Golang-Mini-Projects/Project7/note"
+	"github.com/sikehish/Golang-Mini-Projects/Project7/stringgo"
 	"github.com/sikehish/Golang-Mini-Projects/Project7/todo"
 )
 
@@ -50,6 +48,8 @@ func main() {
 
 	title, content := getNoteData() //OR var title,content=func() OR var title, content string = func()
 	todoText := getUserInput("Todo text: ")
+	//OR
+	// todoText := stringgo.ReadLongString("Todo text: ")
 
 	//Creating a new TODO
 	newTodo, err := todo.New(todoText)
@@ -131,26 +131,7 @@ func getNoteData() (string, string) {
 // }
 
 func getUserInput(prompt string) string {
-	var input string
-	fmt.Print(prompt)
-
-	// fmt.Scanln(&input)
-	// //We get unexpected behaviour when we enter "Learn Go" as input for the Note title prompt
-	// //This is because all the scan functions are designed to accept signle word input and beyond that(space seperated words) we might not get the desired functionality
-
-	reader := bufio.NewReader(os.Stdin)
-	text, err := reader.ReadString('\n')
-
-	if err != nil {
-		return ""
-	}
-
-	input = strings.TrimSpace(text) //Removes leading and tralinign whitespaces
-	// //OR
-	// input = strings.TrimSuffix(text, "\n")
-	// input = strings.TrimSuffix(input, "\r") //For windows OS
-
-	return input
+	return stringgo.ReadLongString(prompt)
 }
 
 //--------------------------------------------------------------
@@ -239,10 +220,10 @@ func printSomething(value interface{}) {
 // // 	return a + b
 // // }
 
-// func log[T any](a, b T) {
-// 	fmt.Println(a, b)
-// }
+func log[T any](a, b T) {
+	fmt.Println(a, b)
+}
 
-// func add[T int | string | float64](a, b T) T {
-// 	return a + b
-// }
+func add[T int | string | float64](a, b T) T {
+	return a + b
+}
