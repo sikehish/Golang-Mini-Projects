@@ -9,7 +9,7 @@ import (
 
 // Struct
 type Todo struct {
-	Text string `json:"content"`
+	Text string `json:"text"`
 }
 
 //Struct tags are metadata that can be added to the struct fields(we use it here as the json package(encoding/json) can then come up with custom key in the JSON data corresponding to each struct field based on the tags that we provide in the aboce struct)
