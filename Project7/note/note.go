@@ -9,11 +9,14 @@ import (
 	"time"
 )
 
+// Struct
 type Note struct {
-	Title     string
-	Content   string
-	CreatedAt time.Time
+	Title     string    `json:"title"` //-> struct tag
+	Content   string    `json:"content"`
+	CreatedAt time.Time `json:"created_at"`
 }
+
+//Struct tags are metadata that can be added to the struct fields(we use it here as the json package(encoding/json) can then come up with custom key in the JSON data corresponding to each struct field based on the tags that we provide in the aboce struct)
 
 // Constructor
 func New(title, content string) (Note, error) {
