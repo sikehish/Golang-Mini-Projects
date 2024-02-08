@@ -44,4 +44,36 @@ func main() {
 	//AFter the third key value pair is inserted, and when we insert the below key value pair, go will reallocate memory for the map
 	courseRatings["Express"] = 4.8
 
+	//Type Aliases: Better dev experience
+	fmt.Println("------Type Aliases------")
+	courseRatings2 := floatMap{}
+	//OR
+	// courseRatings2 := make(floatMap, 3)
+	courseRatings2["CSS"] = 4.6
+	courseRatings2["Go"] = 4.9
+	courseRatings2.output()
+	// fmt.Println(courseRatings2) --> same as the output method defined on floatMap
+
+	//Looping with Arrays, Slices and Maps: https://www.golang-book.com/books/intro/6
+	//Looping over slices(its the same for arrays and maps as well)
+	fmt.Println("--------------")
+	fmt.Println("Looping over slices")
+	for index, value := range userNames { //range is a keyword
+		fmt.Printf("%v:%v\n", index, value)
+	}
+	//NOTE: if you dont care about individual item values or indexes, you can just write "for range userNames"
+
+	//Looping over maps:
+	fmt.Println("Looping over maps")
+	for key, value := range courseRatings2 { //range is a keyword
+		fmt.Printf("%v:%v\n", key, value)
+	}
+}
+
+// Type Aliases: Better dev experience
+type floatMap map[string]float64
+
+// Methods on the custom type can be defined
+func (mp floatMap) output() {
+	fmt.Println("Float Map: ", mp)
 }
