@@ -1,3 +1,6 @@
 go 1.21.6
 
-use ./Project7
+use (
+	./Project7
+	./Project8
+)
