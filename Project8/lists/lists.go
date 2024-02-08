@@ -1,4 +1,6 @@
 // PROJECT 8: Learning about arrays and slices
+//VVI resource: https://www.golang-book.com/books/intro/6
+
 package main
 
 import "fmt"

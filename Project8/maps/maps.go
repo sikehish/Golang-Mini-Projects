@@ -1,5 +1,6 @@
 // PROJECT 8: Learning about maps
 //MAPS: A key value based Data structure. They are dynamic DS
+//VVI resource: https://www.golang-book.com/books/intro/6
 
 package main
 
