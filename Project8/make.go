@@ -1,4 +1,4 @@
-//PROJECT8: Learning about make function and type aliases
+//PROJECT8: Learning about make function, type aliases and looping
 
 package main
 
