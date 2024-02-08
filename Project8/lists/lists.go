@@ -36,4 +36,37 @@ func main() {
 	fmt.Println(featuredPrices, highlightedPrices, len(highlightedPrices), cap(highlightedPrices))
 	//Now, highlightedPrices:=highlightedPrices[0:2] will fetch index 1 an index 2 elements of the featured prices, and there's no way that we'd be able to access any elements to the left of index1 as slice starts from index 1
 
+	//Also, slices are mutable references/windows of the original array. They arent copies but are references. THus modifying a slice would resultin modification of the base slice(if it exists and it does in the below case(featuredPrices)) and base array. Ex:
+	highlightedPrices[0] = 1000
+	fmt.Printf("\n\nResult of Mutation:\nPrices: %v\nfeaturedPrices:%v\nhighlightedPrices:%v\n", prices, featuredPrices, highlightedPrices)
+
+	//SLICES(They are dynamic arrays with no predefined size)
+	priceSlice := []float64{10.99, 8.99}
+	fmt.Println(priceSlice[0:1])
+	fmt.Println(priceSlice[0])
+	priceSlice[1] = 9.99
+	// priceSlice[2]=100 --> invalid as only 2 elements are present. If you want to append a new value, then use append()
+	updatedPrices := append(priceSlice, 5.99) //returns a brand new slice and doesnt modify the underlying slice.Also we can append n number of values, that is:
+	updatedPrices = append(priceSlice, 65, 4545, 32)
+	fmt.Println(priceSlice, updatedPrices)
+	//You can modify the existing slice by overwriting it: priceSlice := append(priceSlice, 5.99)
+
+	//NOTE: Slices are more widely used than arrays, given the flexibility
+
+	// Removing en element from a slice
+	fmt.Printf("\nRemoving an element in a slice:\nOriginal Slice: %v\n", updatedPrices)
+	updatedPrices = updatedPrices[1:] //-->removes the first element
+	fmt.Printf("Slice after eliminating the first element: %v\n", updatedPrices)
+	updatedPrices = updatedPrices[:len(updatedPrices)-1] //-->removes the first element
+	fmt.Printf("Slice after eliminating the last element and the first element: %v\n", updatedPrices)
+
+	//To create a copy of a slice in Go, you can use the copy function or simply re-slice the original slice. The copy function is often preferred when you want to ensure that the original and copied slices are completely independent of each other: https://freshman.tech/snippets/go/copy-slices/
+
+	//Unpacking list values
+	//Appending one slice to another slice
+	discountPrices := []float64{1.23, 12.3, 123}
+	//Note append only works on slices and not on arrays
+	appendedSlice := append(updatedPrices, discountPrices...)
+	//... is the unpacking operator(known as spread in JS) seperates the elements of the slice (comma seperated), and hence can be used as arguments for the append() func
+	fmt.Println(updatedPrices, appendedSlice)
 }
