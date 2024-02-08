@@ -1,4 +1,4 @@
-// PROJECT 8: Learning about arrays,slices and maps
+// PROJECT 8: Learning about arrays and slices
 package main
 
 import "fmt"
