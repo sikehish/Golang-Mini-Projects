@@ -15,6 +15,10 @@ func main() {
 	fmt.Println(products)
 	fmt.Println(productName)
 
+	// In an array literal, the ... notation specifies a length equal to the number of elements in the literal.
+	prices = [...]float64{10.99, 9.99, 45.99, 20.0}
+	fmt.Println("Array Literal: ", prices)
+
 	//Creating a slice from the array
 	// featuredPrices := prices[1:3] //Includes elements starting from index 1 to index 3-1=2.
 	// featuredPrices := prices[:3]   //From index 0 to 2
@@ -65,8 +69,8 @@ func main() {
 	//Unpacking list values
 	//Appending one slice to another slice
 	discountPrices := []float64{1.23, 12.3, 123}
-	//Note append only works on slices and not on arrays
-	appendedSlice := append(updatedPrices, discountPrices...)
+	//Note: append only works on slices and not on arrays
+	appendedSlice := append(updatedPrices, discountPrices...) //https://yourbasic.org/golang/three-dots-ellipsis/
 	//... is the unpacking operator(known as spread in JS) seperates the elements of the slice (comma seperated), and hence can be used as arguments for the append() func
 	fmt.Println(updatedPrices, appendedSlice)
 }
