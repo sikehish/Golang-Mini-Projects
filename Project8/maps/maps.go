@@ -1,4 +1,4 @@
-// PROJECT 8: Learning about arrays,slices and maps
+// PROJECT 8: Learning about maps
 //MAPS: A key value based Data structure. They are dynamic DS
 
 package main
