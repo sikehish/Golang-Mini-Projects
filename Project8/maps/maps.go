@@ -20,6 +20,20 @@ func main() {
 	fmt.Println(websites["Linkedin"] == "") //Basically it doesnt exist, hence empty string ouput
 	fmt.Println(websites["Amazon Web Services"])
 
+	//Better way of handling access to keys that arent present in the map:
+	if value, ok := websites["Twitter"]; ok /*same as ok == true*/ {
+		fmt.Println("Website URL: ", value)
+	} else {
+		fmt.Println("Website not found:( ")
+	}
+	//OR
+	val, ok := websites["Google"] //For Gogle,if block will get executed, but for Linkedin, the else block will get executed
+	if ok {
+		fmt.Println("Website URL: ", val)
+	} else {
+		fmt.Println("Website not found:( ")
+	}
+
 	//Adding a new key value pair
 	websites["Linkedin"] = "https://linkedin.com"
 	fmt.Println("After inserting linkedin: ", websites)
