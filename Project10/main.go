@@ -144,4 +144,11 @@ func main() {
 
 	//NOTE: we dont go with this approach if we dont know which function would take the longest to execute
 
+	// NOTE:In Go, you can return values from a goroutine. However, the challenge lies in capturing the result from the goroutine, as goroutines operate concurrently, and the return statement typically returns values to the calling function in a synchronous manner. When working with goroutines, you need to use additional mechanisms to collect or synchronize the results.
+
+	//Types of channels in go: https://www.tutorialspoint.com/channel-in-golang
+	//Apart from bidirectional channels,that we've used here, there are 2 more channels that can be used: https://golangr.com/channel-directions
+
+	//NOTE: If you want to learn mote about usage of defer, multiple channels being used in a goroutine, select statement and defer keyword, then you can refer my Golang Price Calculator project:https://github.com/sikehish/Go-Price-Calculator
+
 }
