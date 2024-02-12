@@ -10,6 +10,8 @@
 
 //Main Goroutine: The main goroutine is the initial goroutine that runs when your program starts. The main function executes in this goroutine. Any code written in the main function, by default, runs in the main goroutine.
 
+//Final UPDATE: We could do the following in the Process() goroutine: setting errChan<-nil at the  end of the program, or setting errChan<-err, if err!=nil. This would eliminate the need to have doneChan as we can evaluate the execution based on errChan alone. This might simplify the code a lil bit imo
+
 package main
 
 import (
